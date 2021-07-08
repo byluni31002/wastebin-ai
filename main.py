@@ -14,12 +14,10 @@ input_layer_nodes = 128
 hidden_layer_1_nodes = 512
 hidden_layer_2_nodes = 512
 output_layer_nodes = 4
-
-# Neuronen in den Layern
 classes = 4
 batch_size = 128
-class_names = ['normal', 'zu niedrig', 'high peak', 'HW Defekt']
 
+class_names = ['normal', 'zu niedrig', 'high peak', 'HW Defekt']
 col_list = ['mac', 'slocTime', 'status', 'echo']
 
 def file_input():
