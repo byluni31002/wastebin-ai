@@ -22,7 +22,6 @@ class_names = ['normal', 'zu niedrig', 'high peak', 'HW Defekt']
 
 col_list = ['mac', 'slocTime', 'status', 'echo']
 
-
 def file_input():
     Tk().withdraw()
     file = askopenfilename()
@@ -34,8 +33,7 @@ def file_input():
 
     for echo in df['echo']:
         if (echo != 'echo'):
-            echos.append(trimmer(echo))
-
+            echos.append(string2float(echo))
 
 def neuronales_netz_keras():
     file_input()
@@ -47,14 +45,14 @@ def neuronales_netz_keras():
 def predict(x):
     return model(x)
 
-def trimmer(str):
-    strhelp2 = []
-    strhelp = str.split(',')
-    retArray = []
-    for s in strhelp:
-        strhelp2.append(float(s))
-    retArray.append(strhelp2)
-    return retArray
+def string2float(str):
+    floatarray = []
+    strarray = str.split(',')
+    float_array_2d = []
+    for s in strarray:
+        floatarray.append(float(s))
+    float_array_2d.append(floatarray)
+    return float_array_2d
 
 def demo_gui():
     layout = [[sg.InputText(), sg.Text("Echo")],
@@ -65,8 +63,8 @@ def demo_gui():
     while True:
         event, values = window.read()
         if event == "OK":
-            p = predict(trimmer(values[0]))
-            sg.popup('Ist eine: ', class_names[np.argmax(p)], 'Tensor: ', p)
+            p = predict(string2float(values[0]))
+            sg.popup('Ist: ', class_names[np.argmax(p)])
         if event == "EXIT" or event == sg.WIN_CLOSED:
             break
     window.close()
