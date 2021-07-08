@@ -35,7 +35,7 @@ def file_input():
         if (echo != 'echo'):
             echos.append(string2float(echo))
 
-def neuronales_netz_keras():
+def neuronales_netz_testdaten_implementierne():
     file_input()
     model.fit(echos, status, epochs=25)
     test_loss, test_acc = model.evaluate(echos, status, verbose=2)
@@ -80,5 +80,5 @@ if __name__ == "__main__":
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
 
-    neuronales_netz_keras()
+    neuronales_netz_testdaten_implementierne()
     demo_gui()
