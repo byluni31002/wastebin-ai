@@ -49,11 +49,11 @@ def predict(x):
 def string2int(str):
     floatarray = []
     strarray = str.split(',')
-    float_array_2d = []
+    int_array_2d = []
     for s in strarray:
         floatarray.append(int(s))
-    float_array_2d.append(floatarray)
-    return float_array_2d
+    int_array_2d.append(floatarray)
+    return int_array_2d
 
 def demo_gui():
     layout = [[sg.InputText(), sg.Text("Echo")],
