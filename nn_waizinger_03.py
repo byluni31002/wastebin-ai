@@ -27,11 +27,11 @@ def file_input():
 
     for lvl in df['fill level']:
         if (lvl != 'fill level'):
-            fuellstand.append(float(lvl))
+            fuellstand.append(int(lvl))
 
     for echo in df['echo']:
         if (echo != 'echo'):
-            echos.append(string2float(echo))
+            echos.append(string2int(echo))
 
 def neuronales_netz_testdaten_implementierne():
     file_input()
@@ -43,14 +43,14 @@ def neuronales_netz_testdaten_implementierne():
 def predict(x):
     return model(x)
 
-def string2float(str):
-    floatarray = []
+def string2int(str):
+    intarray = []
     strarray = str.split(',')
-    float_array_2d = []
+    int_array_2d = []
     for s in strarray:
-        floatarray.append(float(s))
-    float_array_2d.append(floatarray)
-    return float_array_2d
+        intarray.append(int(s))
+    int_array_2d.append(intarray)
+    return int_array_2d
 
 def demo_gui():
     layout = [[sg.InputText(), sg.Text("Echo")],
@@ -61,7 +61,7 @@ def demo_gui():
     while True:
         event, values = window.read()
         if event == "OK":
-            p = predict(string2float(values[0]))
+            p = predict(string2int(values[0]))
             sg.popup('Ist: ', class_names[np.argmax(p)])
         if event == "EXIT" or event == sg.WIN_CLOSED:
             break
