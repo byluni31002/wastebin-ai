@@ -11,8 +11,8 @@ fuellstand = []
 
 # Layer
 input_layer_nodes = 128
-hidden_layer_1_nodes = 256
-hidden_layer_2_nodes = 256
+hidden_layer_1_nodes = 128
+hidden_layer_2_nodes = 128
 output_layer_nodes = 11
 classes = 11
 batch_size = 128
@@ -35,7 +35,7 @@ def file_input():
 
 def neuronales_netz_testdaten_implementierne():
     file_input()
-    model.fit(echos, fuellstand, epochs=75)
+    model.fit(echos, fuellstand, epochs=70)
     test_loss, test_acc = model.evaluate(echos, fuellstand, verbose=2)
     print('Test accuracy:', test_acc)
 
@@ -76,8 +76,8 @@ if __name__ == "__main__":
     print('input database csv')
     print(get_csv_data.data_file_input())
     model = keras.Sequential([tf.compat.v1.keras.layers.Flatten(input_shape=(0, input_layer_nodes)),
-                              tf.compat.v1.keras.layers.Dense(hidden_layer_1_nodes, activation=tf.nn.relu),
-                              tf.compat.v1.keras.layers.Dense(hidden_layer_2_nodes, activation=tf.nn.relu),
+                              tf.compat.v1.keras.layers.Dense(hidden_layer_1_nodes, activation=tf.nn.selu),
+                              tf.compat.v1.keras.layers.Dense(hidden_layer_2_nodes, activation=tf.nn.selu),
                               tf.compat.v1.keras.layers.Dense(output_layer_nodes, activation=tf.nn.softmax),
                               ])
     model.compile(optimizer='adam',
