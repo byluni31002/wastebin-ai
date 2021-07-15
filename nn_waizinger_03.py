@@ -69,8 +69,8 @@ def demo_gui():
 
 if __name__ == "__main__":
     model = keras.Sequential([tf.compat.v1.keras.layers.Flatten(input_shape=(0, input_layer_nodes)),
-                              tf.compat.v1.keras.layers.Dense(hidden_layer_1_nodes, activation=tf.nn.selu),
-                              tf.compat.v1.keras.layers.Dense(hidden_layer_2_nodes, activation=tf.nn.selu),
+                              tf.compat.v1.keras.layers.Dense(hidden_layer_1_nodes, activation=tf.nn.elu),
+                              tf.compat.v1.keras.layers.Dense(hidden_layer_2_nodes, activation=tf.nn.elu),
                               tf.compat.v1.keras.layers.Dense(output_layer_nodes, activation=tf.nn.softmax),
                               ])
 
